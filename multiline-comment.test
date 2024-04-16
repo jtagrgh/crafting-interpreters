@@ -1,0 +1,9 @@
+int x = 3
+
+/* something in the way
+    /* oooOOOooOOOooo */
+    something ,, in the way
+    yeah
+    */
+
+if (x > 2)

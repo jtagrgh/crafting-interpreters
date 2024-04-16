@@ -1,4 +1,4 @@
-package com.craftinginterpreters.lox;
+package jtagrgh.lox;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class Lox {
     private static void runFile(String path) throws IOException {
         byte [] bytes = Files.readAllBytes(Paths.get(path));
 
-        run(new String(bytes, Charset.defaultcharset()));
+        run(new String(bytes, Charset.defaultCharset()));
 
         if (hadError) System.exit(65);
     }
@@ -59,7 +59,7 @@ public class Lox {
 
     private static void report(int line, String where, String message) {
         System.err.println(
-            "[line " + line "] Error" + where + ": " + message);
+            "[line " + line + "] Error" + where + ": " + message);
         hadError = true;
     }
 

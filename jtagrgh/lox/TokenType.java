@@ -1,4 +1,4 @@
-package com.craftinginterpreters.lox; 
+package jtagrgh.lox;
 
 enum TokenType {
     LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -9,6 +9,6 @@ enum TokenType {
     LESS, LESS_EQUAL,
     IDENTIFIER, STRING, NUMBER,
     AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,
-    PRINT, RETURN, SUPER, THIS, TRU, VAR , WHILE,
+    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,
     EOF
 }

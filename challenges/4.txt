@@ -1,0 +1,26 @@
+#prose
+
+Q1. 
+The lexical grammars of Python and Haskell are not regular. What does that mean, 
+and why aren’t they?
+
+A1.
+A regular language can be represented/parsed by a finite automata. Most 
+programming languages aren't regular, including Python and Haskell because they 
+allow balancing parantheses. That task requires the memory of a pushdown 
+automata, which would make it a LL(1) language. More specifically, in Python, 
+indentation depth is meaningful, so two lines next to eachother may require the 
+same indention. That task requires remembering the indention of the previous 
+line, which requires memory, making Python not regular. Morever, representing 
+the Python grammar with a non-pushdown automata would (I guess) requires it to 
+be infinite. Haskell I'm guessing has the same property.
+
+
+Q2.
+Aside from separating tokens—distinguishing print foo from printfoo—spaces 
+aren’t used for much in most languages. However, in a couple of dark corners, a 
+space does affect how code is parsed in CoffeeScript, Ruby, and the C 
+preprocessor. Where and what effect does it have in each of those languages?
+
+A2.
+

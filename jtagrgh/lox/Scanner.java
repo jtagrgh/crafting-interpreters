@@ -1,11 +1,11 @@
-package com.craftinginterpreters.lox;
+package jtagrgh.lox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.craftinginterpreters.lox.TokenType.*;
+import static jtagrgh.lox.TokenType.*;
 
 class Scanner {
     private final String source;
@@ -50,16 +50,20 @@ class Scanner {
                 addToken(match('=') ? LESS_EQUAL : LESS);
                 break;
             case '>':
-                addToken(match('=') ? GREAT_EQUAL : GREATER);
+                addToken(match('=') ? GREATER_EQUAL : GREATER);
                 break;
             case '/':
                 if (match('/')) {
                     while (peek() != '\n' && !isAtEnd()) advance();
-                } else {
+                }
+                else if (match('*')) {
+                    comment();
+                } 
+                else {
                     addToken(SLASH);
                 }
                 break;
-            case '"': string() break;
+            case '"': string(); break;
             case ' ':
             case '\r':
             case '\t':
@@ -83,7 +87,7 @@ class Scanner {
         while (isAlphaNumeric(peek())) advance();
 
         String text = source.substring(start, current);
-        TokenType type = keyword.get(text);
+        TokenType type = keywords.get(text);
         if (type == null) type = IDENTIFIER;
 
         addToken(IDENTIFIER);
@@ -106,15 +110,37 @@ class Scanner {
         addToken(STRING, value);
     }
 
+    private void comment() {
+        int stacked = 1;
+        while (stacked > 0) {
+            if (match('/') && match('*')) {
+                stacked++;
+            }
+            else if(match('*') && match('/')) {
+                stacked--;
+            }
+            else if (match('\n')) {
+                line++;
+            }
+            else {
+                advance();
+            }
+            if (isAtEnd()) {
+                Lox.error(line, "Unterminated multiline comment.");
+                return;
+            }
+        }
+    }
+
     private void number() {
         while (isDigit(peek())) advance();
 
-        if (peek() == '.' && isDigit(peekNext()) {
+        if (peek() == '.' && isDigit(peekNext())) {
             advance();
             while (isDigit(peek())) advance();
         }
 
-        addToken(NUMBER, Double.parseDouble(source.substring(start, current()));
+        addToken(NUMBER, Double.parseDouble(source.substring(start, current)));
     }
 
     private boolean match(char expected) {
@@ -148,7 +174,7 @@ class Scanner {
         return c >= '0' && c <= '9';
     }
 
-    private static final Map<String, TokenType> keyword;
+    private static final Map<String, TokenType> keywords;
 
     static {
         keywords = new HashMap<>();
