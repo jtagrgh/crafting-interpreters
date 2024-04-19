@@ -1,0 +1,6 @@
+factor -> unary factorTail
+factorTail -> ( ( "/" | "*" ) unary ) factorTail
+factorTail -> eps
+
+factor -> unary ( ( "/" | "*" ) unary ) factor
+factor -> eps

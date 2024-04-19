@@ -1,9 +1,22 @@
 package jtagrgh.lox;
 
+
 class AstPrinter implements Expr.Visitor<String> {
 
     String print(Expr expr) {
+        if (expr == null) {
+            return "[AstPrinter] Can't print null AST.";
+        }
+
         return expr.accept(this);
+    }
+
+    @Override
+    public String visitTernaryExpr(Expr.Ternary expr) {
+        return parenthesize(expr.leftOperator.lexeme,
+                            expr.left,
+                            expr.middle,
+                            expr.right);
     }
 
     @Override
@@ -33,7 +46,11 @@ class AstPrinter implements Expr.Visitor<String> {
         builder.append("(").append(name);
         for (Expr expr : exprs) {
             builder.append(" ");
-            builder.append(expr.accept(this));
+            if (expr == null) {
+                builder.append("err");
+            } else {
+                builder.append(expr.accept(this));
+            }
         }
         builder.append(")");
 
@@ -41,6 +58,7 @@ class AstPrinter implements Expr.Visitor<String> {
     }
 
     public static void main(String[] args) {
+
         Expr expression = new Expr.Binary(
             new Expr.Unary(
                 new Token(TokenType.MINUS, "-", null, 1),
@@ -50,6 +68,7 @@ class AstPrinter implements Expr.Visitor<String> {
                 new Expr.Literal(45.67)));
 
         System.out.println(new AstPrinter().print(expression));
+
     }
 
 }

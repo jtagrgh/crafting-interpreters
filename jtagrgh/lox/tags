@@ -1,0 +1,172 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AND	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+AstPrinter	AstPrinter.java	/^class AstPrinter implements Expr.Visitor<String> {$/;"	c
+BANG	TokenType.java	/^    BANG, BANG_EQUAL,$/;"	e	enum:TokenType	file:
+BANG_EQUAL	TokenType.java	/^    BANG, BANG_EQUAL,$/;"	e	enum:TokenType	file:
+Binary	Expr.java	/^        Binary(Expr left, Token operator, Expr right) {$/;"	m	class:Expr.Binary
+Binary	Expr.java	/^    static class Binary extends Expr {$/;"	c	class:Expr
+CLASS	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+COLON	TokenType.java	/^    QMARK, COLON,$/;"	e	enum:TokenType	file:
+COMMA	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+DOT	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+ELSE	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+EOF	TokenType.java	/^    EOF$/;"	e	enum:TokenType	file:
+EQUAL	TokenType.java	/^    EQUAL, EQUAL_EQUAL,$/;"	e	enum:TokenType	file:
+EQUAL_EQUAL	TokenType.java	/^    EQUAL, EQUAL_EQUAL,$/;"	e	enum:TokenType	file:
+Expr	Expr.java	/^abstract class Expr {$/;"	c
+FALSE	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+FOR	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+FUN	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+GREATER	TokenType.java	/^    GREATER, GREATER_EQUAL,$/;"	e	enum:TokenType	file:
+GREATER_EQUAL	TokenType.java	/^    GREATER, GREATER_EQUAL,$/;"	e	enum:TokenType	file:
+Grouping	Expr.java	/^        Grouping(Expr expression) {$/;"	m	class:Expr.Grouping
+Grouping	Expr.java	/^    static class Grouping extends Expr {$/;"	c	class:Expr
+IDENTIFIER	TokenType.java	/^    IDENTIFIER, STRING, NUMBER,$/;"	e	enum:TokenType	file:
+IF	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+LEFT_BRACE	TokenType.java	/^    LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,$/;"	e	enum:TokenType	file:
+LEFT_PAREN	TokenType.java	/^    LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,$/;"	e	enum:TokenType	file:
+LESS	TokenType.java	/^    LESS, LESS_EQUAL,$/;"	e	enum:TokenType	file:
+LESS_EQUAL	TokenType.java	/^    LESS, LESS_EQUAL,$/;"	e	enum:TokenType	file:
+Literal	Expr.java	/^        Literal(Object value) {$/;"	m	class:Expr.Literal
+Literal	Expr.java	/^    static class Literal extends Expr {$/;"	c	class:Expr
+Lox	Lox.java	/^public class Lox {$/;"	c
+MINUS	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+NIL	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+NUMBER	TokenType.java	/^    IDENTIFIER, STRING, NUMBER,$/;"	e	enum:TokenType	file:
+OR	TokenType.java	/^    AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,$/;"	e	enum:TokenType	file:
+PLUS	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+PRINT	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+ParseError	Parser.java	/^    private static class ParseError extends RuntimeException {}$/;"	c	class:Parser
+Parser	Parser.java	/^    Parser(List<Token> tokens) {$/;"	m	class:Parser
+Parser	Parser.java	/^class Parser {$/;"	c
+QMARK	TokenType.java	/^    QMARK, COLON,$/;"	e	enum:TokenType	file:
+RETURN	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+RIGHT_BRACE	TokenType.java	/^    LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,$/;"	e	enum:TokenType	file:
+RIGHT_PAREN	TokenType.java	/^    LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,$/;"	e	enum:TokenType	file:
+ReversePolishPrinter	ReversePolishPrinter.java	/^class ReversePolishPrinter implements Expr.Visitor<String> {$/;"	c
+SEMICOLON	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+SLASH	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+STAR	TokenType.java	/^    COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,$/;"	e	enum:TokenType	file:
+STRING	TokenType.java	/^    IDENTIFIER, STRING, NUMBER,$/;"	e	enum:TokenType	file:
+SUPER	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+Scanner	Scanner.java	/^    Scanner(String source) {$/;"	m	class:Scanner
+Scanner	Scanner.java	/^class Scanner {$/;"	c
+THIS	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+TRUE	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+Ternary	Expr.java	/^        Ternary(Expr left,$/;"	m	class:Expr.Ternary
+Ternary	Expr.java	/^    static class Ternary extends Expr {$/;"	c	class:Expr
+Token	Token.java	/^    Token(TokenType type, String lexeme, Object literal, int line) {$/;"	m	class:Token
+Token	Token.java	/^class Token {$/;"	c
+TokenType	TokenType.java	/^enum TokenType {$/;"	g
+Unary	Expr.java	/^        Unary(Token operator, Expr right) {$/;"	m	class:Expr.Unary
+Unary	Expr.java	/^    static class Unary extends Expr {$/;"	c	class:Expr
+VAR	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+Visitor	Expr.java	/^    interface Visitor<R> {$/;"	i	class:Expr
+WHILE	TokenType.java	/^    PRINT, RETURN, SUPER, THIS, TRUE, VAR , WHILE,$/;"	e	enum:TokenType	file:
+accept	Expr.java	/^        <R> R accept(Visitor<R> visitor) {$/;"	m	class:Expr.Binary
+accept	Expr.java	/^        <R> R accept(Visitor<R> visitor) {$/;"	m	class:Expr.Grouping
+accept	Expr.java	/^        <R> R accept(Visitor<R> visitor) {$/;"	m	class:Expr.Literal
+accept	Expr.java	/^        <R> R accept(Visitor<R> visitor) {$/;"	m	class:Expr.Ternary
+accept	Expr.java	/^        <R> R accept(Visitor<R> visitor) {$/;"	m	class:Expr.Unary
+accept	Expr.java	/^    abstract <R> R accept(Visitor<R> visitor);$/;"	m	class:Expr
+addToken	Scanner.java	/^    private void addToken(TokenType type) {$/;"	m	class:Scanner	file:
+addToken	Scanner.java	/^    private void addToken(TokenType type, Object literal) {$/;"	m	class:Scanner	file:
+advance	Parser.java	/^    private Token advance() {$/;"	m	class:Parser	file:
+advance	Scanner.java	/^    private char advance() {$/;"	m	class:Scanner	file:
+check	Parser.java	/^    private boolean check(TokenType type) {$/;"	m	class:Parser	file:
+comma	Parser.java	/^    private Expr comma() {$/;"	m	class:Parser	file:
+comment	Scanner.java	/^    private void comment() {$/;"	m	class:Scanner	file:
+comparison	Parser.java	/^    private Expr comparison() {$/;"	m	class:Parser	file:
+consume	Parser.java	/^    private Token consume(TokenType type, String message) {$/;"	m	class:Parser	file:
+current	Parser.java	/^    private int current = 0;$/;"	f	class:Parser	file:
+current	Scanner.java	/^    private int current = 0;$/;"	f	class:Scanner	file:
+equality	Parser.java	/^    private Expr equality() {$/;"	m	class:Parser	file:
+error	Lox.java	/^    static void error(Token token, String message) {$/;"	m	class:Lox
+error	Lox.java	/^    static void error(int line, String message) {$/;"	m	class:Lox
+error	Parser.java	/^    private ParseError error(Token token, String message) {$/;"	m	class:Parser	file:
+expression	Expr.java	/^        final Expr expression;$/;"	f	class:Expr.Grouping
+expression	Parser.java	/^    private Expr expression() {$/;"	m	class:Parser	file:
+factor	Parser.java	/^    private Expr factor() {$/;"	m	class:Parser	file:
+hadError	Lox.java	/^    static boolean hadError = false;$/;"	f	class:Lox
+identifier	Scanner.java	/^    private void identifier() {$/;"	m	class:Scanner	file:
+isAlpha	Scanner.java	/^    private boolean isAlpha(char c) {$/;"	m	class:Scanner	file:
+isAlphaNumeric	Scanner.java	/^    private boolean isAlphaNumeric(char c) {$/;"	m	class:Scanner	file:
+isAtEnd	Parser.java	/^    private boolean isAtEnd() {$/;"	m	class:Parser	file:
+isAtEnd	Scanner.java	/^    private boolean isAtEnd() {$/;"	m	class:Scanner	file:
+isDigit	Scanner.java	/^    private boolean isDigit(char c) {$/;"	m	class:Scanner	file:
+jtagrgh.lox	AstPrinter.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	Expr.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	Lox.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	Parser.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	ReversePolishPrinter.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	Scanner.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	Token.java	/^package jtagrgh.lox;$/;"	p
+jtagrgh.lox	TokenType.java	/^package jtagrgh.lox;$/;"	p
+keywords	Scanner.java	/^    private static final Map<String, TokenType> keywords;$/;"	f	class:Scanner	file:
+left	Expr.java	/^        final Expr left;$/;"	f	class:Expr.Binary
+left	Expr.java	/^        final Expr left;$/;"	f	class:Expr.Ternary
+leftToken	Expr.java	/^        final Token leftToken;$/;"	f	class:Expr.Ternary
+lexeme	Token.java	/^    final String lexeme;$/;"	f	class:Token
+line	Scanner.java	/^    private int line = 1;$/;"	f	class:Scanner	file:
+line	Token.java	/^    final int line;$/;"	f	class:Token
+literal	Token.java	/^    final Object literal;$/;"	f	class:Token
+main	AstPrinter.java	/^    public static void main(String[] args) {$/;"	m	class:AstPrinter
+main	Lox.java	/^    public static void main(String[] args) throws IOException {$/;"	m	class:Lox
+main	ReversePolishPrinter.java	/^    public static void main(String[] args) {$/;"	m	class:ReversePolishPrinter
+match	Parser.java	/^    private boolean match(TokenType... types) {$/;"	m	class:Parser	file:
+match	Scanner.java	/^    private boolean match(char expected) {$/;"	m	class:Scanner	file:
+middle	Expr.java	/^        final Expr middle;$/;"	f	class:Expr.Ternary
+number	Scanner.java	/^    private void number() {$/;"	m	class:Scanner	file:
+operator	Expr.java	/^        final Token operator;$/;"	f	class:Expr.Binary
+operator	Expr.java	/^        final Token operator;$/;"	f	class:Expr.Unary
+parenthesize	AstPrinter.java	/^    private String parenthesize(String name, Expr... exprs) {$/;"	m	class:AstPrinter	file:
+parenthesize	ReversePolishPrinter.java	/^    private String parenthesize(String name, Expr... exprs) {$/;"	m	class:ReversePolishPrinter	file:
+parse	Parser.java	/^    Expr parse() {$/;"	m	class:Parser
+peek	Parser.java	/^    private Token peek() {$/;"	m	class:Parser	file:
+peek	Scanner.java	/^    private char peek() {$/;"	m	class:Scanner	file:
+peekNext	Scanner.java	/^    private char peekNext() {$/;"	m	class:Scanner	file:
+previous	Parser.java	/^    private Token previous() {$/;"	m	class:Parser	file:
+primary	Parser.java	/^    private Expr primary() {$/;"	m	class:Parser	file:
+print	AstPrinter.java	/^    String print(Expr expr) {$/;"	m	class:AstPrinter
+print	ReversePolishPrinter.java	/^    String print(Expr expr) {$/;"	m	class:ReversePolishPrinter
+report	Lox.java	/^    private static void report(int line, String where, String message) {$/;"	m	class:Lox	file:
+right	Expr.java	/^        final Expr right;$/;"	f	class:Expr.Binary
+right	Expr.java	/^        final Expr right;$/;"	f	class:Expr.Ternary
+right	Expr.java	/^        final Expr right;$/;"	f	class:Expr.Unary
+rightToken	Expr.java	/^        final Token rightToken;$/;"	f	class:Expr.Ternary
+run	Lox.java	/^    private static void run(String source) {$/;"	m	class:Lox	file:
+runFile	Lox.java	/^    private static void runFile(String path) throws IOException {$/;"	m	class:Lox	file:
+runPrompt	Lox.java	/^    private static void runPrompt() throws IOException {$/;"	m	class:Lox	file:
+scanToken	Scanner.java	/^    private void scanToken() {$/;"	m	class:Scanner	file:
+scanTokens	Scanner.java	/^    List<Token> scanTokens() {$/;"	m	class:Scanner
+source	Scanner.java	/^    private final String source;$/;"	f	class:Scanner	file:
+start	Scanner.java	/^    private int start = 0;$/;"	f	class:Scanner	file:
+string	Scanner.java	/^    private void string() {$/;"	m	class:Scanner	file:
+synchronize	Parser.java	/^    private void synchronize() {$/;"	m	class:Parser	file:
+term	Parser.java	/^    private Expr term() {$/;"	m	class:Parser	file:
+ternary	Parser.java	/^    private Expr ternary() {$/;"	m	class:Parser	file:
+toString	Token.java	/^    public String toString() {$/;"	m	class:Token
+tokens	Parser.java	/^    private final List<Token> tokens;$/;"	f	class:Parser	file:
+tokens	Scanner.java	/^    private final List<Token> tokens = new ArrayList<>();$/;"	f	class:Scanner	file:
+type	Token.java	/^    final TokenType type;$/;"	f	class:Token
+unary	Parser.java	/^    private Expr unary() {$/;"	m	class:Parser	file:
+value	Expr.java	/^        final Object value;$/;"	f	class:Expr.Literal
+visitBinaryExpr	AstPrinter.java	/^    public String visitBinaryExpr(Expr.Binary expr) {$/;"	m	class:AstPrinter
+visitBinaryExpr	Expr.java	/^        R visitBinaryExpr(Binary Expr);$/;"	m	interface:Expr.Visitor
+visitBinaryExpr	ReversePolishPrinter.java	/^    public String visitBinaryExpr(Expr.Binary expr) {$/;"	m	class:ReversePolishPrinter
+visitGroupingExpr	AstPrinter.java	/^    public String visitGroupingExpr(Expr.Grouping expr) {$/;"	m	class:AstPrinter
+visitGroupingExpr	Expr.java	/^        R visitGroupingExpr(Grouping Expr);$/;"	m	interface:Expr.Visitor
+visitGroupingExpr	ReversePolishPrinter.java	/^    public String visitGroupingExpr(Expr.Grouping expr) {$/;"	m	class:ReversePolishPrinter
+visitLiteralExpr	AstPrinter.java	/^    public String visitLiteralExpr(Expr.Literal expr) {$/;"	m	class:AstPrinter
+visitLiteralExpr	Expr.java	/^        R visitLiteralExpr(Literal Expr);$/;"	m	interface:Expr.Visitor
+visitLiteralExpr	ReversePolishPrinter.java	/^    public String visitLiteralExpr(Expr.Literal expr) {$/;"	m	class:ReversePolishPrinter
+visitTernarExpr	Expr.java	/^        R visitTernarExpr(Ternary Expr);$/;"	m	interface:Expr.Visitor
+visitTernary	AstPrinter.java	/^    public String visitTernary(Expr.Ternary expr) {$/;"	m	class:AstPrinter
+visitUnaryExpr	AstPrinter.java	/^    public String visitUnaryExpr(Expr.Unary expr) {$/;"	m	class:AstPrinter
+visitUnaryExpr	Expr.java	/^        R visitUnaryExpr(Unary Expr);$/;"	m	interface:Expr.Visitor
+visitUnaryExpr	ReversePolishPrinter.java	/^    public String visitUnaryExpr(Expr.Unary expr) {$/;"	m	class:ReversePolishPrinter

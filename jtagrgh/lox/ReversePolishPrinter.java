@@ -5,6 +5,14 @@ class ReversePolishPrinter implements Expr.Visitor<String> {
     String print(Expr expr) {
         return expr.accept(this);
     }
+    
+    @Override
+    public String visitTernaryExpr(Expr.Ternary expr) {
+        return parenthesize(expr.leftOperator.lexeme,
+                            expr.left,
+                            expr.middle,
+                            expr.right);
+    }
 
     @Override
     public String visitBinaryExpr(Expr.Binary expr) {
@@ -42,13 +50,16 @@ class ReversePolishPrinter implements Expr.Visitor<String> {
     }
 
     public static void main(String[] args) {
+
         Expr expression = new Expr.Binary(
-            new Expr.Binary(
-                new Expr.Literal(1), new Token(TokenType.PL
+            new Expr.Unary(
+                new Token(TokenType.MINUS, "-", null, 1),
+                new Expr.Literal(123)),
             new Token(TokenType.STAR, "*", null, 1),
             new Expr.Grouping(
                 new Expr.Literal(45.67)));
 
-        System.out.println(new ReversePolishPrinter().print(expression));
+        System.out.println(new AstPrinter().print(expression));
+
     }
 }

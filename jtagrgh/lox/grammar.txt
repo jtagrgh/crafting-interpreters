@@ -1,0 +1,48 @@
+comma               -> expression ( "," expression )* ;
+
+expression          -> ternary ;
+
+ternary             -> equality ( "?" ternary ":" ternary )? ;
+
+equality            -> ( equalityNoLeft | equalityValid ) ;
+equalityNoLeft      -> ( ( "!=" | "==" ) comparison )* ;
+equalityValid       -> comparison ( ( "!=" | "==" ) comparison )* ;
+
+comparison          -> ( comparisonNoLeft | comparison ) ;
+comparisonNoLeft    -> ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+comparisonValid     -> term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+
+term                -> ( termNoLeft | termValid ) ;
+termNoLeft          -> ( ( "-" | "+" ) factor )* ;
+termValid           -> factor ( ( "-" | "+" ) factor )* ;
+
+factor              -> ( factorNoLeft | factorValid ) ;
+factorNoLeft        -> ( ( "/" | "*" ) unary )* ;
+factorValid         -> unary ( ( "/" | "*" ) unary )* ;
+
+unary               -> ( "!" | "-" ) unary
+                    | primary ;
+
+primary             -> NUMBER | STRING | "true" | "false" | "nil"
+                    | "(" expression ")" ;
+
+
+
+[a ? b : (c ? d : e)], [a ? b : (c ? d : e)]
+
+e ? f : (g ? b : c)
+
+a ? (e ? f : h) : g
+
+
+1 - + 2 * 3
+
+(- 1 (+ _ (* 2 3)))
+
+(+ _ (* 2 3))
+
+
++ 2 * 3 == 6
+
+(== (+ _ (* 2 3)) 7)
+

@@ -40,6 +40,9 @@ class Scanner {
             case '-': addToken(MINUS); break;
             case '+': addToken(PLUS); break;
             case ';': addToken(SEMICOLON); break;
+            case '*': addToken(STAR); break;
+            case '?': addToken(QMARK); break;
+            case ':': addToken(COLON); break;
             case '!':
                 addToken(match('=') ? BANG_EQUAL : BANG);
                 break;
@@ -90,7 +93,7 @@ class Scanner {
         TokenType type = keywords.get(text);
         if (type == null) type = IDENTIFIER;
 
-        addToken(IDENTIFIER);
+        addToken(type);
     }
 
     private void string() {
