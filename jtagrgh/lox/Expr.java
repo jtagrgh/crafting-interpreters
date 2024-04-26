@@ -7,12 +7,14 @@ abstract class Expr {
     interface Visitor<R> {
         R visitAssignExpr(Assign Expr);
         R visitBinaryExpr(Binary Expr);
+        R visitCallExpr(Call Expr);
         R visitLogicalExpr(Logical Expr);
         R visitGroupingExpr(Grouping Expr);
         R visitLiteralExpr(Literal Expr);
         R visitUnaryExpr(Unary Expr);
         R visitTernaryExpr(Ternary Expr);
         R visitVariableExpr(Variable Expr);
+        R visitFunctionExpr(Function Expr);
     }
 
     static class Assign extends Expr {
@@ -45,6 +47,23 @@ abstract class Expr {
         final Expr left;
         final Token operator;
         final Expr right;
+    }
+
+    static class Call extends Expr {
+        Call(Expr callee, Token paren, List<Expr> arguments) {
+            this.callee = callee;
+            this.paren = paren;
+            this.arguments = arguments;
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitCallExpr(this);
+        }
+
+        final Expr callee;
+        final Token paren;
+        final List<Expr> arguments;
     }
 
     static class Logical extends Expr {
@@ -137,6 +156,23 @@ abstract class Expr {
         }
 
         final Token name;
+    }
+
+    static class Function extends Expr {
+        Function(Token name, List<Token> params, List<Stmt> body) {
+            this.name = name;
+            this.params = params;
+            this.body = body;
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitFunctionExpr(this);
+        }
+
+        final Token name;
+        final List<Token> params;
+        final List<Stmt> body;
     }
 
 

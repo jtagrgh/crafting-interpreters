@@ -1,7 +1,14 @@
 program             -> declaration* EOF ;
 
-declaration         -> varDecl
+declaration         -> funDecl
+                     | varDecl
                      | statement ;
+
+funDecl             -> "fun" function ;
+
+function            -> IDENTIFIER "(" parameters? ")" block ;
+
+parameters          -> IDENTIFIER ( "," INDENTIFIER )* ;
 
 varDecl             -> "var" IDENTIFIER ( "=" expression )? ";" ;
 
@@ -9,9 +16,10 @@ statement           -> exprStmt
                      | forStmt
                      | ifStmt
                      | printStmt
+                     | returnStmt
                      | whileStmt
                      | block 
-                     | breakStmt;
+                     | breakStmt ;
 
 exprStmt            -> expression ";" ;
 
@@ -24,18 +32,20 @@ ifStmt              -> "if" "(" expression ")" statement
 
 printStmt           -> "print" expression ";" ;
 
+returnStmt          -> "return" expression? ";" ;
+
 whileStmt           -> "while" "(" expression ")" statement ;
 
 block               -> "{" declaration* "}" ;
 
 breakStmt           -> "break" ";" ;
 
-expression          -> assignment ;
+expression          -> comma ;
+
+comma               -> assignment ( "," assignment )* ;
 
 assignment          -> IDENTIFIER "=" assignment
-                     | comma ;
-
-comma               -> ternary ( "," ternary )* ;
+                     | ternary ;
 
 ternary             -> logic_or ( "?" ternary ":" ternary )? ;
 
@@ -59,11 +69,18 @@ factorNoLeft        -> ( ( "/" | "*" ) unary )* ;
 factorValid         -> unary ( ( "/" | "*" ) unary )* ;
 
 unary               -> ( "!" | "-" ) unary
-                    | primary ;
+                    | call ;
+
+call                -> primary ( "(" arguments? ")" )* ;
+
+arguments           -> expression ( "," expression )* ;
 
 primary             -> NUMBER | STRING | "true" | "false" | "nil"
-                    | "(" expression ")" ;
-                    | INDENTIFIER ;
+                     | "(" expression ")" ;
+                     | INDENTIFIER 
+                     | funExpr;
+
+funExpr             -> "fun" "(" parameters? ")" block ;
 
 
 

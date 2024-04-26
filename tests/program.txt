@@ -1,4 +1,21 @@
-for (var i = 0; i < 10; i = i + 1) {
-    if (i == 5) if (i == 6) break;
-    print i;
+fun argpass(do, arg) {
+    return do(arg);
 }
+print argpass(fun (x) { return x + 1; },
+              "hello");
+
+
+
+fun scope(a) {
+    var a = "local";
+    return a;
+}
+print scope("arg");
+
+
+
+var funvar = fun () { 
+    return fun () { print "Hello World!"; }; 
+};
+
+funvar()();
