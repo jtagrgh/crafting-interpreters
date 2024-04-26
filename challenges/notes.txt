@@ -3,3 +3,8 @@ Challege additions done:
  - Comma operator
  - Ternary operator
  - Error production (w/ grammar) for binary expr missing left operand
+ - String + non-string addition
+ - Divide by 0 error
+ - Automatic expression print in REPL (Still have to type a ; though)
+ - Runtime error for access unassigned variable
+ - Break statements (I made them runtime errors because it's easier)

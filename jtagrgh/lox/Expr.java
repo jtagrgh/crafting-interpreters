@@ -5,37 +5,29 @@ import java.util.List;
 abstract class Expr {
 
     interface Visitor<R> {
-        R visitTernaryExpr(Ternary Expr);
+        R visitAssignExpr(Assign Expr);
         R visitBinaryExpr(Binary Expr);
+        R visitLogicalExpr(Logical Expr);
         R visitGroupingExpr(Grouping Expr);
         R visitLiteralExpr(Literal Expr);
         R visitUnaryExpr(Unary Expr);
+        R visitTernaryExpr(Ternary Expr);
+        R visitVariableExpr(Variable Expr);
     }
 
-    static class Ternary extends Expr {
-        Ternary(Expr left,
-                Token leftOperator,
-                Expr middle,
-                Token rightOperator,
-                Expr right) {
-            this.left = left;
-            this.leftOperator = leftOperator;
-            this.middle = middle;
-            this.rightOperator = rightOperator;
-            this.right = right;
+    static class Assign extends Expr {
+        Assign(Token name, Expr value) {
+            this.name = name;
+            this.value = value;
         }
 
         @Override
         <R> R accept(Visitor<R> visitor) {
-            return visitor.visitTernaryExpr(this);
+            return visitor.visitAssignExpr(this);
         }
 
-        final Expr left;
-        final Token leftOperator;
-        final Expr middle;
-        final Token rightOperator;
-        final Expr right;
-
+        final Token name;
+        final Expr value;
     }
 
     static class Binary extends Expr {
@@ -48,6 +40,23 @@ abstract class Expr {
         @Override
         <R> R accept(Visitor<R> visitor) {
             return visitor.visitBinaryExpr(this);
+        }
+
+        final Expr left;
+        final Token operator;
+        final Expr right;
+    }
+
+    static class Logical extends Expr {
+        Logical(Expr left, Token operator, Expr right) {
+            this.left = left;
+            this.operator = operator;
+            this.right = right;
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitLogicalExpr(this);
         }
 
         final Expr left;
@@ -94,6 +103,40 @@ abstract class Expr {
 
         final Token operator;
         final Expr right;
+    }
+
+    static class Ternary extends Expr {
+        Ternary(Expr left, Token leftOperator, Expr middle, Token rightOperator, Expr right) {
+            this.left = left;
+            this.leftOperator = leftOperator;
+            this.middle = middle;
+            this.rightOperator = rightOperator;
+            this.right = right;
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitTernaryExpr(this);
+        }
+
+        final Expr left;
+        final Token leftOperator;
+        final Expr middle;
+        final Token rightOperator;
+        final Expr right;
+    }
+
+    static class Variable extends Expr {
+        Variable(Token name) {
+            this.name = name;
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitVariableExpr(this);
+        }
+
+        final Token name;
     }
 
 

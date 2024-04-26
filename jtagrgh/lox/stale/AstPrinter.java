@@ -1,11 +1,22 @@
 package jtagrgh.lox;
 
-class ReversePolishPrinter implements Expr.Visitor<String> {
+
+class AstPrinter implements Expr.Visitor<String> {
 
     String print(Expr expr) {
+        if (expr == null) {
+            return "[AstPrinter] Can't print null AST.";
+        }
+
         return expr.accept(this);
     }
-    
+
+
+    @Override
+    public String visitAssignExpr(Expr.Assign expr) {
+        return parenthesize(expr.name.lexeme, expr.value);
+    }
+
     @Override
     public String visitTernaryExpr(Expr.Ternary expr) {
         return parenthesize(expr.leftOperator.lexeme,
@@ -35,15 +46,23 @@ class ReversePolishPrinter implements Expr.Visitor<String> {
         return parenthesize(expr.operator.lexeme, expr.right);
     }
 
+    @Override
+    public String visitVariableExpr(Expr.Variable expr) {
+        return parenthesize(expr.name.lexeme);
+    }
+
     private String parenthesize(String name, Expr... exprs) {
         StringBuilder builder = new StringBuilder();
 
-        builder.append("(");
+        builder.append("(").append(name);
         for (Expr expr : exprs) {
-            builder.append(expr.accept(this));
             builder.append(" ");
+            if (expr == null) {
+                builder.append("err");
+            } else {
+                builder.append(expr.accept(this));
+            }
         }
-        builder.append(name);
         builder.append(")");
 
         return builder.toString();
@@ -62,4 +81,5 @@ class ReversePolishPrinter implements Expr.Visitor<String> {
         System.out.println(new AstPrinter().print(expression));
 
     }
+
 }
