@@ -1,21 +1,10 @@
-fun argpass(do, arg) {
-    return do(arg);
+var a = "global";
+{
+  fun showA() {
+    print a;
+  }
+
+  showA();
+  var a = "block";
+  showA();
 }
-print argpass(fun (x) { return x + 1; },
-              "hello");
-
-
-
-fun scope(a) {
-    var a = "local";
-    return a;
-}
-print scope("arg");
-
-
-
-var funvar = fun () { 
-    return fun () { print "Hello World!"; }; 
-};
-
-funvar()();

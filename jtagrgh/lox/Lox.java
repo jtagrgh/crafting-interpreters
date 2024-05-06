@@ -54,7 +54,12 @@ public class Lox {
         Parser parser = new Parser(tokens);
         List<Stmt> statements = parser.parse();
 
-        if (hadError) return;
+        if (hadError) return; // Stop if parse error.
+
+        Resolver resolver = new Resolver(interpreter);
+        resolver.resolve(statements);
+
+        if (hadError) return; // Stop if resolution error.
 
         interpreter.interpret(statements);
     }
@@ -77,8 +82,7 @@ public class Lox {
     }
 
     private static void report(int line, String where, String message) {
-        System.err.println(
-            "[line " + line + "] Error" + where + ": " + message);
+        System.err.println("[line " + line + "] Error" + where + ": " + message);
         hadError = true;
     }
 
