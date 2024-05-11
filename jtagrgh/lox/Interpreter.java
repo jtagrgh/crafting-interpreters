@@ -95,7 +95,8 @@ class Interpreter implements Expr.Visitor<Object>,
 
     @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
-        LoxFunction function = new LoxFunction(stmt, environment);
+        LoxFunction function = new LoxFunction(stmt, environment, 
+                                               false);
         environment.define(stmt.name.lexeme, function);
         return null;
     }
@@ -109,7 +110,32 @@ class Interpreter implements Expr.Visitor<Object>,
     @Override
     public Void visitClassStmt(Stmt.Class stmt) {
         environment.define(stmt.name.lexeme, null);
-        LoxClass klass = new LoxClass(stmt.name.lexeme);
+
+        Map<String, LoxFunction> methods = new HashMap<>();
+        for (Stmt.Function method : stmt.methods) {
+            final boolean isInitalizer = method.name.lexeme.equals("init");
+            LoxFunction function = new LoxFunction(method, environment,
+                                                   isInitalizer);
+            methods.put(method.name.lexeme, function);
+        }
+
+        Map<String, LoxFunction> statics = new HashMap<>();
+        for (Stmt.Function staticMethod : stmt.statics) {
+            LoxFunction function = new LoxFunction(staticMethod, environment, false);
+            statics.put(staticMethod.name.lexeme, function);
+        }
+
+        Map<String, LoxFunction> getters = new HashMap<>();
+        for (Stmt.Function getter : stmt.getters) {
+            LoxFunction function = new LoxFunction(getter, environment, false);
+            getters.put(getter.name.lexeme, function);
+        }
+
+
+        LoxClass klass = new LoxClass(stmt.name.lexeme, methods, statics, getters);
+
+        klass.initialize(this); 
+
         environment.assign(stmt.name, klass);
         return null;
     }
@@ -185,6 +211,11 @@ class Interpreter implements Expr.Visitor<Object>,
         Object value = evaluate(expr.value);
         ((LoxInstance)object).set(expr.name, value);
         return value;
+    }
+
+    @Override
+    public Object visitThisExpr(Expr.This expr) {
+        return lookUpVariable(expr.keyword, expr);
     }
     
     @Override
@@ -306,7 +337,7 @@ class Interpreter implements Expr.Visitor<Object>,
     public Object visitGetExpr(Expr.Get expr) {
         Object object = evaluate(expr.object);
         if (object instanceof LoxInstance) {
-            return ((LoxInstance) object).get(expr.name);
+            return ((LoxInstance) object).get(this, expr.name);
         }
 
         throw new RuntimeError(expr.name,
@@ -318,7 +349,8 @@ class Interpreter implements Expr.Visitor<Object>,
         Stmt.Function stmtWrapper = new Stmt.Function(expr.name, 
                                                       expr.params, 
                                                       expr.body);
-        LoxFunction callable = new LoxFunction(stmtWrapper, environment);
+        LoxFunction callable = new LoxFunction(stmtWrapper, environment,
+                                               false);
 
         return callable;
     }

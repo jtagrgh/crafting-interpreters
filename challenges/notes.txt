@@ -10,3 +10,6 @@ Challege additions done:
  - Break statements (I made them runtime errors because it's easier)
  - anonymous functions
  - Unused local variable syntax error
+ - Static methods
+ - Static fields
+ - Getters (shadowed by fields)
