@@ -5,9 +5,10 @@ declaration         -> classDecl
                      | varDecl
                      | statement ;
 
-classDecl           -> "class" IDENTIFIER "{" method "}" ;
+classDecl           -> "class" IDENTIFIER ( "<" IDENTIFIER )?
+                       "{" methods "}" ;
 
-method              -> ( static | function | getter )*
+methods             -> ( static | function | getter )*
 
 static              -> "class" function ;
 
@@ -84,10 +85,11 @@ call                -> primary ( "(" arguments? ")" | "." IDENTIFIER )* ;
 
 arguments           -> expression ( "," expression )* ;
 
-primary             -> NUMBER | STRING | "true" | "false" | "nil"
+primary             -> NUMBER | STRING | "true" | "false" | "nil" | "this"
                      | "(" expression ")" ;
                      | INDENTIFIER 
-                     | funExpr;
+                     | funExpr
+                     | "super" "." IDENTIFIER ;
 
 funExpr             -> "fun" "(" parameters? ")" block ;
 
