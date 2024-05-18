@@ -279,6 +279,15 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     }
 
     @Override
+    public Void visitInnerExpr(Expr.Inner expr) {
+        if (currentClass == ClassType.NONE) {
+            Lox.error(expr.keyword,
+                      "Can't use 'super' outside of a class.");
+        }
+        return null;
+    }
+
+    @Override
     public Void visitThisExpr(Expr.This expr) {
         if (currentClass == ClassType.NONE) {
             Lox.error(expr.keyword,

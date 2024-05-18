@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 class Interpreter implements Expr.Visitor<Object>,
                              Stmt.Visitor<Void> {
@@ -11,6 +12,7 @@ class Interpreter implements Expr.Visitor<Object>,
     final Environment globals = new Environment();
     private Environment environment = globals;
     private final Map<Expr, Integer> locals = new HashMap<>();
+    public Stack<LoxFunction> methodStack;
 
     Interpreter() {
         globals.define("clock", new LoxCallable() {
@@ -128,6 +130,7 @@ class Interpreter implements Expr.Visitor<Object>,
         Map<String, LoxFunction> methods = new HashMap<>();
         for (Stmt.Function method : stmt.methods) {
             final boolean isInitalizer = method.name.lexeme.equals("init");
+
             LoxFunction function = new LoxFunction(method, environment,
                                                    isInitalizer);
             methods.put(method.name.lexeme, function);
@@ -238,6 +241,7 @@ class Interpreter implements Expr.Visitor<Object>,
     @Override
     public Object visitSuperExpr(Expr.Super expr) {
         int distance = locals.get(expr);
+
         LoxClass superclass = (LoxClass)environment.getAt(
                 distance, "super");
 
@@ -252,6 +256,18 @@ class Interpreter implements Expr.Visitor<Object>,
         }
 
         return method.bind(object);
+    }
+
+    @Override
+    public Object visitInnerExpr(Expr.Inner expr) {
+        if (methodStack.isEmpty()) {
+            throw new RuntimeError(expr.keyword, "Method not overloaded in child.");
+        }
+        LoxFunction top = methodStack.pop();
+        Object returnValue = top.call(this, null);
+        methodStack.push(top);
+
+        return returnValue;
     }
 
     @Override

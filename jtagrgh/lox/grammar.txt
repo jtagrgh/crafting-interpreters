@@ -86,10 +86,11 @@ call                -> primary ( "(" arguments? ")" | "." IDENTIFIER )* ;
 arguments           -> expression ( "," expression )* ;
 
 primary             -> NUMBER | STRING | "true" | "false" | "nil" | "this"
-                     | "(" expression ")" ;
+                     | "(" expression ")"
                      | INDENTIFIER 
                      | funExpr
-                     | "super" "." IDENTIFIER ;
+                     | "super" "." IDENTIFIER 
+                     | "inner" "(" ")";
 
 funExpr             -> "fun" "(" parameters? ")" block ;
 

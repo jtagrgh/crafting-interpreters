@@ -507,6 +507,13 @@ class Parser {
             return new Expr.Super(keyword, method);
         }
 
+        if (match(INNER)) {
+            Token keyword = previous();
+            consume(LEFT_PAREN, "Expect '(' after inner call.");
+            consume(RIGHT_PAREN, "Expect ')' after inner call.");
+            return new Expr.Inner(keyword);
+        }
+
         if (match(THIS)) return new Expr.This(previous());
 
         if (match(IDENTIFIER)) {

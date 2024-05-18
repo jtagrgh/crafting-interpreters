@@ -2,6 +2,7 @@ package jtagrgh.lox;
 
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 class LoxClass extends LoxInstance implements LoxCallable {
     final String name;
@@ -29,6 +30,20 @@ class LoxClass extends LoxInstance implements LoxCallable {
             staticInitializer.bind(this).call(interpreter, null);
         }
     }
+
+    ArrayList<LoxFunction> getMethodStack(String name) {
+        ArrayList<LoxFunction> methodList = new ArrayList<>();
+        LoxClass seeker = this;
+        while (seeker != null) {
+            if (seeker.methods.containsKey(name)) {
+                methodList.add(seeker.methods.get(name));
+            }
+            seeker = seeker.superclass;
+        }
+
+        return methodList;
+    }
+
 
     LoxFunction findMethod(String name) {
         if (methods.containsKey(name)) {

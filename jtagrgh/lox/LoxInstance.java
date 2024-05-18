@@ -2,6 +2,8 @@ package jtagrgh.lox;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
+import java.util.ArrayList;
 
 class LoxInstance {
     private LoxClass klass;
@@ -17,8 +19,18 @@ class LoxInstance {
             return fields.get(name.lexeme);
         }
 
-        LoxFunction method = klass.findMethod(name.lexeme);
-        if (method != null) return method.bind(this);
+        ArrayList<LoxFunction> methodList = klass.getMethodStack(name.lexeme);
+        Stack<LoxFunction> methodStack = new Stack<>();
+
+        if (!methodList.isEmpty()) {
+            for (LoxFunction method : methodList) {
+                methodStack.push(method.bind(this));
+            }
+            LoxFunction top = methodStack.peek();
+            methodStack.pop();
+            interpreter.methodStack = methodStack;
+            return top;
+        }
 
         LoxFunction getter = klass.findGetter(name.lexeme);
         if (getter != null) {

@@ -12,6 +12,7 @@ abstract class Expr {
         R visitLogicalExpr(Logical Expr);
         R visitSetExpr(Set Expr);
         R visitSuperExpr(Super Expr);
+        R visitInnerExpr(Inner Expr);
         R visitThisExpr(This Expr);
         R visitGroupingExpr(Grouping Expr);
         R visitLiteralExpr(Literal Expr);
@@ -132,6 +133,19 @@ abstract class Expr {
 
         final Token keyword;
         final Token method;
+    }
+
+    static class Inner extends Expr {
+        Inner(Token keyword) {
+            this.keyword = keyword;
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visitInnerExpr(this);
+        }
+
+        final Token keyword;
     }
 
     static class This extends Expr {
